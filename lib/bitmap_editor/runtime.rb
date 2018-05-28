@@ -1,6 +1,8 @@
 require 'bitmap_editor/runtime/bitmap'
 require 'bitmap_editor/runtime/command'
+
 require 'bitmap_editor/runtime/invalid_command'
+require 'bitmap_editor/runtime/missing_bitmap'
 
 class BitmapEditor
   class Runtime
@@ -13,7 +15,7 @@ class BitmapEditor
       'S' => BitmapEditor::Runtime::Show
     }.freeze
 
-    attr_accessor :bitmap
+    attr_writer :bitmap
 
     def initialize(commands)
       @commands = commands
@@ -27,6 +29,12 @@ class BitmapEditor
           .new(params)
           .execute(self)
       end
+    end
+
+    def bitmap
+      raise MissingBitmap if @bitmap.nil?
+
+      @bitmap
     end
   end
 end

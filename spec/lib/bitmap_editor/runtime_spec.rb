@@ -9,5 +9,11 @@ describe BitmapEditor::Runtime do
         BitmapEditor::Runtime.new([['G', [1, 2, 3]]]).start
       end
     end
+
+    it 'raise an exception if the first commant is "S"' do
+      assert_raises(BitmapEditor::Runtime::MissingBitmap) do
+        BitmapEditor::Runtime.new([['S']]).start
+      end
+    end
   end
 end

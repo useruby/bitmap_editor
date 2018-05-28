@@ -1,8 +1,8 @@
 class BitmapEditor
   class Runtime
-    class InvalidCommand < StandardError
+    class MissingBitmap < StandardError
       def message
-        'unrecognised command :('
+        'There is no image'
       end
     end
   end

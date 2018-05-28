@@ -7,5 +7,8 @@ class BitmapEditor
     @script = File.read(file_name)
 
     Interpreter.new(script).execute
+  
+  rescue StandardError => e
+    puts(e.message)
   end
 end
