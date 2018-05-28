@@ -9,16 +9,16 @@ describe BitmapEditor do
 
   subject { BitmapEditor.new }
 
-  describe '#eval' do
+  describe '#run' do
     it 'reads script from the file' do
-      capture_io { subject.eval(file_name) }
+      capture_io { subject.run(file_name) }
 
       assert_equal(subject.script, input_file)
     end
 
     it 'outputs expected output' do
       assert_output(expected_output) do
-        subject.eval(file_name)
+        subject.run(file_name)
       end
     end
   end
