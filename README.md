@@ -2,7 +2,7 @@
 
   `bin/bitmap_editor examples/show.txt`
 
-# Run tests
+# Run test
 
   `rake test`
 
