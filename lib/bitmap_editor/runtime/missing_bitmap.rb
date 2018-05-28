@@ -1,6 +1,6 @@
 class BitmapEditor
   class Runtime
-    class MissingBitmap < StandardError
+    class MissingBitmap < Error
       def message
         'There is no image'
       end

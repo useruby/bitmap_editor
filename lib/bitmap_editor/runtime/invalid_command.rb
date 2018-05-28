@@ -1,6 +1,6 @@
 class BitmapEditor
   class Runtime
-    class InvalidCommand < StandardError
+    class InvalidCommand < Error
       def message
         'unrecognised command :('
       end

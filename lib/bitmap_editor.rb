@@ -8,7 +8,7 @@ class BitmapEditor
 
     Interpreter.new(script).execute
   
-  rescue StandardError => e
-    puts(e.message)
+  rescue Runtime::Error => error
+    puts(error.message)
   end
 end

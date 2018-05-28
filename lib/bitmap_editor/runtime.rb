@@ -1,8 +1,6 @@
 require 'bitmap_editor/runtime/bitmap'
 require 'bitmap_editor/runtime/command'
-
-require 'bitmap_editor/runtime/invalid_command'
-require 'bitmap_editor/runtime/missing_bitmap'
+require 'bitmap_editor/runtime/error'
 
 class BitmapEditor
   class Runtime
