@@ -1,9 +1,10 @@
 class BitmapEditor
   class Runtime
     class CreateImage < Command
-      def execute(runtime)
-        width, height = @params.map(&:to_i)
+      param :width, Integer
+      param :height, Integer
 
+      def execute(runtime)
         runtime.bitmap = Bitmap.new(width, height)
       end
     end

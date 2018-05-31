@@ -1,11 +1,11 @@
 class BitmapEditor
   class Runtime
     class SetPixel < Command
-      def execute(runtime)
-        x = @params[0].to_i
-        y = @params[1].to_i
-        color = @params[2]
+      param :x, Integer
+      param :y, Integer
+      param :color, Color
 
+      def execute(runtime)
         runtime.bitmap.set_pixel(x, y, color)
       end
     end
