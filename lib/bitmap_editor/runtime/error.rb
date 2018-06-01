@@ -14,10 +14,3 @@ class BitmapEditor
     end
   end
 end
-
-require 'bitmap_editor/runtime/errors/missing_bitmap'
-require 'bitmap_editor/runtime/errors/bitmap/size_incorrect'
-require 'bitmap_editor/runtime/errors/invalid_command'
-require 'bitmap_editor/runtime/errors/coordinate_out_of_range'
-require 'bitmap_editor/runtime/errors/incorrect_parameter_type'
-require 'bitmap_editor/runtime/errors/incorrect_number_of_parameters'

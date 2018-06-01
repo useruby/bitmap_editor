@@ -6,7 +6,7 @@ class BitmapEditor
           runtime.bitmap.pixels
             .each_slice(runtime.bitmap.width)
             .map(&:join)
-            .join("\n")
+            .join($/)
         )
       end
     end
