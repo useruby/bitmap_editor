@@ -48,12 +48,12 @@ class BitmapEditor
   end
 end
 
-require 'bitmap_editor/runtime/color'
-require 'bitmap_editor/runtime/positive_integer'
+require 'bitmap_editor/runtime/types/color'
+require 'bitmap_editor/runtime/types/positive_integer'
 
-require 'bitmap_editor/runtime/create_image'
-require 'bitmap_editor/runtime/clear_table'
-require 'bitmap_editor/runtime/set_pixel'
-require 'bitmap_editor/runtime/vertical_line'
-require 'bitmap_editor/runtime/horizontal_line'
-require 'bitmap_editor/runtime/show'
+require 'bitmap_editor/runtime/commands/create_image'
+require 'bitmap_editor/runtime/commands/clear_table'
+require 'bitmap_editor/runtime/commands/set_pixel'
+require 'bitmap_editor/runtime/commands/vertical_line'
+require 'bitmap_editor/runtime/commands/horizontal_line'
+require 'bitmap_editor/runtime/commands/show'

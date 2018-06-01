@@ -1,6 +1,6 @@
 require 'minitest/autorun'
 
-require 'bitmap_editor/runtime/color'
+require 'bitmap_editor/runtime/types/color'
 
 describe BitmapEditor::Runtime::Color do
   describe '#invalid?' do
