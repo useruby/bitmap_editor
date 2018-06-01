@@ -15,6 +15,6 @@ class BitmapEditor
   rescue SystemCallError, IOError
     puts(PROVIDE_CORRECT_FILE)
   rescue Runtime::Error => error
-    puts(error.message)
+    error.print_message
   end
 end

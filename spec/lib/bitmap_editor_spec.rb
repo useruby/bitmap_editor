@@ -21,5 +21,16 @@ describe BitmapEditor do
         subject.run(file_name)
       end
     end
+
+    describe 'error' do
+      let(:file_name) { 'examples/error.txt'}
+      let(:expected_output) { "Line 4 --> L 1 3 5 A <-- incorrect number of parameters\n" }
+
+      it 'prints error message' do
+        assert_output(expected_output) do
+          subject.run(file_name)
+        end
+      end
+    end
   end
 end

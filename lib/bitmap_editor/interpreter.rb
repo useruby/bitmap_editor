@@ -13,11 +13,17 @@ class BitmapEditor
     end
 
     def parse
-      @script.split($/).reject(&:empty?).map do |line|
+      line_number = 0
+
+      @script.split($/).map do |line|
+        line_number += 1
+
+        next if line.empty?
+
         command, *params = line.split("\s")
 
-        [command, params]
-      end
+        [line_number, command, params]
+      end.compact
     end
   end
 end

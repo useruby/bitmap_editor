@@ -21,11 +21,15 @@ class BitmapEditor
     end
 
     def start
-      @commands.each do |command, params|
-        COMMANDS
-          .fetch(command) { raise(InvalidCommand) }
-          .new(params)
-          .execute(self)
+      @commands.each do |line_number, command, params|
+        begin
+          COMMANDS
+            .fetch(command) { raise(InvalidCommand) }
+            .new(params)
+            .execute(self)
+        rescue Error => error
+          raise error.class.new(line_number, command, params)
+        end
       end
     end
 
