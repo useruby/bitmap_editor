@@ -1,5 +1,5 @@
-require 'bitmap_editor/runtime/bitmap'
 require 'bitmap_editor/runtime/command'
+require 'bitmap_editor/runtime/bitmap'
 require 'bitmap_editor/runtime/error'
 
 class BitmapEditor

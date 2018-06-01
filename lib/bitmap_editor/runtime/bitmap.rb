@@ -1,5 +1,3 @@
-require 'bitmap_editor/runtime/bitmap/size_incorrect'
-
 class BitmapEditor
   class Runtime
     class Bitmap
