@@ -10,13 +10,9 @@ class BitmapEditor
         end
 
         define_method("#{name}=") do |value|
-          if type == Integer
-            raise IncorrectParameterType unless value.to_s.match(/\d/)
-            
-            value = value.to_i
-          elsif type == Color
-            raise IncorrectParameterType if Color.new(value).invalid?
-          end
+          value = type.new(value)
+
+          raise IncorrectParameterType if value.invalid?
 
           instance_variable_set(:"@#{name}", value)
         end
@@ -42,6 +38,8 @@ class BitmapEditor
 end
 
 require 'bitmap_editor/runtime/color'
+require 'bitmap_editor/runtime/positive_integer'
+
 require 'bitmap_editor/runtime/create_image'
 require 'bitmap_editor/runtime/clear_table'
 require 'bitmap_editor/runtime/set_pixel'

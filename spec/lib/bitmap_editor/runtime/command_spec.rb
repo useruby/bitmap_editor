@@ -5,7 +5,7 @@ require 'bitmap_editor/runtime/command'
 describe BitmapEditor::Runtime::Command do
   let(:kung_fu_command) do
     class BitmapEditor::Runtime::KungFuCommand < BitmapEditor::Runtime::Command
-      param :one, Integer
+      param :one, BitmapEditor::Runtime::PositiveInteger
       param :color, BitmapEditor::Runtime::Color
     end
 
@@ -14,7 +14,7 @@ describe BitmapEditor::Runtime::Command do
 
   describe '.new' do
     it 'creates new instance where parameter one will equal to 1' do
-      assert_equal(kung_fu_command.new(['1']).one, 1)
+      assert_equal(kung_fu_command.new(['1']).one.to_i, 1)
     end
 
     it 'creates new instance where parameter color will equal to W' do

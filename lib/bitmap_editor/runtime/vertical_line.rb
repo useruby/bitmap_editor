@@ -1,9 +1,9 @@
 class BitmapEditor
   class Runtime
     class VerticalLine < Command
-      param :x, Integer
-      param :y1, Integer
-      param :y2, Integer
+      param :x, PositiveInteger
+      param :y1, PositiveInteger
+      param :y2, PositiveInteger
       param :color, Color
 
       def execute(runtime)

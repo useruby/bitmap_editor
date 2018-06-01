@@ -23,11 +23,11 @@ class BitmapEditor
       end
 
       def draw_vertical_line(x, y1, y2, color)
-        (y1..y2).each { |y| set_pixel(x, y, color) }
+        (y1.to_i..y2.to_i).each { |y| set_pixel(x, y, color) }
       end
 
       def draw_horizontal_line(x1, x2, y, color)
-        (x1..x2).each { |x| set_pixel(x, y, color) }
+        (x1.to_i..x2.to_i).each { |x| set_pixel(x, y, color) }
       end
     end
   end

@@ -1,8 +1,8 @@
 class BitmapEditor
   class Runtime
     class CreateImage < Command
-      param :width, Integer
-      param :height, Integer
+      param :width, PositiveInteger
+      param :height, PositiveInteger
 
       def execute(runtime)
         runtime.bitmap = Bitmap.new(width, height)

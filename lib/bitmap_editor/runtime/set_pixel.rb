@@ -1,8 +1,8 @@
 class BitmapEditor
   class Runtime
     class SetPixel < Command
-      param :x, Integer
-      param :y, Integer
+      param :x, PositiveInteger
+      param :y, PositiveInteger
       param :color, Color
 
       def execute(runtime)

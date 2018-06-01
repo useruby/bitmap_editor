@@ -1,12 +1,8 @@
 class BitmapEditor
   class Runtime
-    class Color
-      def initialize(color)
-        @color = color
-      end
-
+    class Color < String
       def invalid?
-        @color.match(/^[A-Z]{1}$/).nil?
+        match(/^[A-Z]{1}$/).nil?
       end
     end
   end
