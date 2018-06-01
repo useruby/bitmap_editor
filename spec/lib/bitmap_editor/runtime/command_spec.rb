@@ -14,22 +14,22 @@ describe BitmapEditor::Runtime::Command do
 
   describe '.new' do
     it 'creates new instance where parameter one will equal to 1' do
-      assert_equal(kung_fu_command.new(['1', 'W']).one.to_i, 1)
+      assert_equal(kung_fu_command.new(%w[1 W]).one.to_i, 1)
     end
 
     it 'creates new instance where parameter color will equal to W' do
-      assert_equal(kung_fu_command.new(['1', 'W']).color, 'W')
+      assert_equal(kung_fu_command.new(%w[1 W]).color, 'W')
     end
 
     it 'raises an exception if first parameter is color' do
       assert_raises(BitmapEditor::Runtime::IncorrectParameterType) do
-        kung_fu_command.new(['W', 'W'])
+        kung_fu_command.new(%w[W W])
       end
     end
 
     it 'raises an exception if second parameter is digit' do
       assert_raises(BitmapEditor::Runtime::IncorrectParameterType) do
-        kung_fu_command.new(['1', '2'])
+        kung_fu_command.new(%w[1 2])
       end
     end
 
@@ -41,7 +41,7 @@ describe BitmapEditor::Runtime::Command do
 
     it 'raises an exception if more than two parameters' do
       assert_raises(BitmapEditor::Runtime::IncorrectNumberOfParameters) do
-        kung_fu_command.new(['1', '2', '3'])
+        kung_fu_command.new(%w[1 2 3])
       end
     end
   end

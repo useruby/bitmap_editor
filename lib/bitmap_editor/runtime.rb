@@ -2,7 +2,7 @@ require 'bitmap_editor/runtime/bitmap'
 require 'bitmap_editor/runtime/command'
 require 'bitmap_editor/runtime/error'
 
-%w(types commands errors).each do |folder|
+%w[types commands errors].each do |folder|
   Dir[File.join(File.dirname(__FILE__), 'runtime', folder, '**', '*.rb')].each do |file|
     require(file)
   end

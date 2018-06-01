@@ -28,7 +28,7 @@ class BitmapEditor
 
       def initialize(params)
         raise IncorrectNumberOfParameters if incorrect_number_of_params?(params)
-        
+
         params&.each_with_index do |value, index|
           set_param_value(index, value)
         end
