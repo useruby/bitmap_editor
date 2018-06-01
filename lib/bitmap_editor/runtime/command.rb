@@ -3,7 +3,7 @@ class BitmapEditor
     class Command
       def self.param(name, type)
         @names ||= []
-        @names << name
+        @names << name unless @names.include?(name)
 
         define_method(name) do
           instance_variable_get(:"@#{name}")
@@ -18,11 +18,17 @@ class BitmapEditor
         end
       end
 
-      def self.name_from_index(index)
+      def self.param_name_by_index(index)
         @names[index]
       end
 
+      def self.number_of_params
+        @names.nil? ? 0 : @names.size
+      end
+
       def initialize(params)
+        raise IncorrectNumberOfParameters if incorrect_number_of_params?(params)
+        
         params&.each_with_index do |value, index|
           set_param_value(index, value)
         end
@@ -30,8 +36,13 @@ class BitmapEditor
 
       private
 
+      def incorrect_number_of_params?(params)
+        params_size = params.nil? ? 0 : params.size
+        params_size != self.class.number_of_params
+      end
+
       def set_param_value(index, value)
-        send(:"#{self.class.name_from_index(index)}=", value)
+        send(:"#{self.class.param_name_by_index(index)}=", value)
       end
     end
   end
