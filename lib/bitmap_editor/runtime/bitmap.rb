@@ -23,10 +23,8 @@ class BitmapEditor
       end
   
       def draw(x1, y1, x2, y2, color)
-        (x1..x2).each do |x|
-          (y1..y2).each do |y|
-            @pixels[coordinate_to_index(x, y)] = color
-          end
+        (y1..y2).each do |y|
+          @pixels.fill(color, coordinate_to_index(x1, y)..coordinate_to_index(x2, y))
         end
       end
 
