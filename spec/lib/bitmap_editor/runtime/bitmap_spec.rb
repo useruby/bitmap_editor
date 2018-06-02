@@ -15,7 +15,7 @@ describe BitmapEditor::Runtime::Bitmap do
     end
 
     it 'fill all the pixels with O' do
-      assert(subject.pixels.all? { |pixel| pixel == 'O' }, 'not all pixel set correctly')
+      assert(subject.each_line.flatten.all? { |pixel| pixel == 'O' }, 'not all pixel set correctly')
     end
 
     it 'raise an exception if width is greater than maximum size' do
@@ -41,7 +41,7 @@ describe BitmapEditor::Runtime::Bitmap do
     it 'fills pixel with color' do
       subject.set_pixel(1, 3, 'A')
 
-      assert_equal(subject.pixels[10], 'A')
+      assert_equal(subject.pixel(1, 3), 'A')
     end
   end
 
@@ -49,10 +49,10 @@ describe BitmapEditor::Runtime::Bitmap do
     it 'draws vertical line' do
       subject.draw_vertical_line(2, 3, 6, 'W')
 
-      assert_equal(subject.pixels[11], 'W')
-      assert_equal(subject.pixels[16], 'W')
-      assert_equal(subject.pixels[21], 'W')
-      assert_equal(subject.pixels[26], 'W')
+      assert_equal(subject.pixel(2, 3), 'W')
+      assert_equal(subject.pixel(2, 4), 'W')
+      assert_equal(subject.pixel(2, 5), 'W')
+      assert_equal(subject.pixel(2, 6), 'W')
     end
   end
 
@@ -60,9 +60,9 @@ describe BitmapEditor::Runtime::Bitmap do
     it 'draws horizontal line' do
       subject.draw_horizontal_line(3, 5, 2, 'Z')
 
-      assert_equal(subject.pixels[7], 'Z')
-      assert_equal(subject.pixels[8], 'Z')
-      assert_equal(subject.pixels[9], 'Z')
+      assert_equal(subject.pixel(3, 2), 'Z')
+      assert_equal(subject.pixel(4, 2), 'Z')
+      assert_equal(subject.pixel(5, 2), 'Z')
     end
   end
 end

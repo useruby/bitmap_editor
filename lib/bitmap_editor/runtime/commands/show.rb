@@ -3,8 +3,9 @@ class BitmapEditor
     class Show < Command
       def execute(runtime)
         puts(
-          runtime.bitmap.pixels
-            .each_slice(runtime.bitmap.width)
+          runtime
+            .bitmap
+            .each_line
             .map(&:join)
             .join($/)
         )
