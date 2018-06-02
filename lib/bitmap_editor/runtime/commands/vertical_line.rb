@@ -7,7 +7,7 @@ class BitmapEditor
       param :color, Color
 
       def execute(runtime)
-        runtime.bitmap.draw_vertical_line(x, y1, y2, color)
+        runtime.bitmap.draw(x, y1, x, y2, color)
       end
     end
   end

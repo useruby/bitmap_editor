@@ -45,20 +45,18 @@ describe BitmapEditor::Runtime::Bitmap do
     end
   end
 
-  describe '#vertical_line' do
+  describe '#draw' do
     it 'draws vertical line' do
-      subject.draw_vertical_line(2, 3, 6, 'W')
+      subject.draw(2, 3, 2, 6, 'W')
 
       assert_equal(subject.pixel(2, 3), 'W')
       assert_equal(subject.pixel(2, 4), 'W')
       assert_equal(subject.pixel(2, 5), 'W')
       assert_equal(subject.pixel(2, 6), 'W')
     end
-  end
 
-  describe '#horizontal_line' do
     it 'draws horizontal line' do
-      subject.draw_horizontal_line(3, 5, 2, 'Z')
+      subject.draw(3, 2, 5, 2, 'Z')
 
       assert_equal(subject.pixel(3, 2), 'Z')
       assert_equal(subject.pixel(4, 2), 'Z')

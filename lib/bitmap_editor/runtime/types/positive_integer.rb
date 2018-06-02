@@ -9,6 +9,10 @@ class BitmapEditor
         @value <=> other
       end
 
+      def succ
+        self.class.new(@value.succ)
+      end
+
       def *(other)
         @value * other
       end

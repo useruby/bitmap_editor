@@ -7,7 +7,7 @@ class BitmapEditor
       param :color, Color
 
       def execute(runtime)
-        runtime.bitmap.draw_horizontal_line(x1, x2, y, color)
+        runtime.bitmap.draw(x1, y, x2, y, color)
       end
     end
   end

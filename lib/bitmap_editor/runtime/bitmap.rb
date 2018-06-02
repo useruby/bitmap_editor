@@ -17,25 +17,23 @@ class BitmapEditor
       def pixel(x, y)
         @pixels[coordinate_to_index(x, y)]
       end
-
+ 
       def set_pixel(x, y, color)
         @pixels[coordinate_to_index(x, y)] = color
       end
-
-      def each_line
-        (1..height).to_a.map do |y|
-          @pixels.values_at(
-            coordinate_to_index(ORIGIN_POINT, y)..coordinate_to_index(width, y)
-          )
+  
+      def draw(x1, y1, x2, y2, color)
+        (x1..x2).each do |x|
+          (y1..y2).each do |y|
+            @pixels[coordinate_to_index(x, y)] = color
+          end
         end
       end
- 
-      def draw_vertical_line(x, y1, y2, color)
-        (y1.to_i..y2.to_i).each { |y| set_pixel(x, y, color) }
-      end
 
-      def draw_horizontal_line(x1, x2, y, color)
-        (x1.to_i..x2.to_i).each { |x| set_pixel(x, y, color) }
+      def each_line
+        (ORIGIN_POINT..height).to_a.map do |y|
+          @pixels[coordinate_to_index(ORIGIN_POINT, y)..coordinate_to_index(width, y)]
+        end
       end
 
       private
