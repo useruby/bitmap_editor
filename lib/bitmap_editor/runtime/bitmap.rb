@@ -15,14 +15,10 @@ class BitmapEditor
       end
 
       def pixel(x, y)
-        raise CoordinateOutOfRange if x > width || y > height
-
         @pixels[coordinate_to_index(x, y)]
       end
 
       def set_pixel(x, y, color)
-        raise CoordinateOutOfRange if x > width || y > height
-
         @pixels[coordinate_to_index(x, y)] = color
       end
 
@@ -45,6 +41,8 @@ class BitmapEditor
       private
 
       def coordinate_to_index(x, y)
+        raise CoordinateOutOfRange if x > width || y > height
+
         (y - ORIGIN_POINT) * width + (x - ORIGIN_POINT)
       end
     end
