@@ -61,6 +61,12 @@ class BitmapEditor
         end
       end
 
+      def fill(x, y, replacement_color)
+        target_color = pixel(x, y)
+
+        flood_fill(x, y, target_color, replacement_color)
+      end
+
       def each_line
         (ORIGIN_POINT..height).to_a.map do |y|
           @pixels[coordinate_to_index(ORIGIN_POINT, y)..coordinate_to_index(width, y)]
@@ -73,6 +79,25 @@ class BitmapEditor
         raise CoordinateOutOfRange if x > width || y > height
 
         (y - ORIGIN_POINT) * width + (x - ORIGIN_POINT)
+      end
+
+      def flood_fill(x, y, target_color, replacement_color)
+        begin
+          return if target_color == replacement_color
+          
+          color_of_pixel = pixel(x, y)
+
+          return if color_of_pixel != target_color
+
+          set_pixel(x, y, replacement_color)
+        rescue CoordinateOutOfRange
+          return
+        end
+
+        flood_fill(x, y - 1, target_color, replacement_color)
+        flood_fill(x, y + 1, target_color, replacement_color)
+        flood_fill(x - 1, y, target_color, replacement_color)
+        flood_fill(x + 1, y, target_color, replacement_color)
       end
     end
   end
