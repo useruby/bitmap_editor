@@ -64,6 +64,8 @@ class BitmapEditor
       def fill(x, y, replacement_color)
         target_color = pixel(x, y)
 
+        return if target_color == replacement_color
+
         flood_fill(x, y, target_color, replacement_color)
       end
 
@@ -81,23 +83,30 @@ class BitmapEditor
         (y - ORIGIN_POINT) * width + (x - ORIGIN_POINT)
       end
 
-      def flood_fill(x, y, target_color, replacement_color)
+      def color?(x, y, color)
         begin
-          return if target_color == replacement_color
-          
-          color_of_pixel = pixel(x, y)
-
-          return if color_of_pixel != target_color
-
-          set_pixel(x, y, replacement_color)
+          pixel(x, y) == color
         rescue CoordinateOutOfRange
-          return
+          false
         end
+      end
 
-        flood_fill(x, y - 1, target_color, replacement_color)
-        flood_fill(x, y + 1, target_color, replacement_color)
-        flood_fill(x - 1, y, target_color, replacement_color)
-        flood_fill(x + 1, y, target_color, replacement_color)
+      def flood_fill(target_x, target_y, target_color, replacement_color) 
+        queue = [[target_x, target_y]]
+
+        until (x, y = queue.shift).nil? do
+          west, east, north, south = [x, x, y - 1, y + 1]
+
+          west -= 1 while color?(west - 1, y, target_color)
+          east += 1 while color?(east + 1, y, target_color)
+
+          draw(west, y, east, y, replacement_color)
+
+          (west..east).each do |node|
+            queue << [node, north] if color?(node, north, target_color)
+            queue << [node, south] if color?(node, south, target_color)
+          end
+        end
       end
     end
   end
