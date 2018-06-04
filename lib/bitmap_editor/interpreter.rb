@@ -2,6 +2,9 @@ require 'bitmap_editor/runtime'
 
 class BitmapEditor
   class Interpreter
+    COMMENT_DELIMITER = '-'.freeze
+    PARAMS_DELIMETER = "\s".freeze
+
     def initialize(script)
       @script = script
     end
@@ -18,9 +21,9 @@ class BitmapEditor
       @script.split($/).map do |line|
         line_number += 1
 
-        next if line.empty?
+        next if line.empty? || line.start_with?(COMMENT_DELIMITER)
 
-        command, *params = line.split("\s")
+        command, *params = line.split(PARAMS_DELIMETER)
 
         [line_number, command, params]
       end.compact

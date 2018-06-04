@@ -4,7 +4,7 @@ require 'bitmap_editor'
 
 describe BitmapEditor do
   let(:file_name) { 'examples/show.txt' }
-  let(:input_file) { "I 5 6\nL 1 3 A\nV 2 3 6 W\nH 3 5 2 Z\nS\n" }
+  let(:input_file) { "I 5 6\nL 1 3 A\nV 2 3 6 W\nH 3 5 2 Z\n-F 4 4 X\nS\n" }
   let(:expected_output) { "OOOOO\nOOZZZ\nAWOOO\nOWOOO\nOWOOO\nOWOOO\n" }
 
   subject { BitmapEditor.new }
