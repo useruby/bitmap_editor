@@ -1,7 +1,7 @@
 class BitmapEditor
   class Runtime
     class Bitmap
-      MAX_SIZE = (1..249)
+      MAX_SIZE = (1..250)
       ORIGIN_POINT = 1
 
       attr_reader :width, :height
