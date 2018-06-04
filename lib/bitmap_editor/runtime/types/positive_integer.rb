@@ -17,6 +17,10 @@ class BitmapEditor
         @value * other
       end
 
+      def +(other)
+        @value + other
+      end
+
       def -(other)
         @value - other
       end

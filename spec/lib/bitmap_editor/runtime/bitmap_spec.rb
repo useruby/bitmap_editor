@@ -62,5 +62,18 @@ describe BitmapEditor::Runtime::Bitmap do
       assert_equal(subject.pixel(4, 2), 'Z')
       assert_equal(subject.pixel(5, 2), 'Z')
     end
+
+    it 'draws diagonal line' do
+      subject.draw(1, 2, 4, 3, 'D')
+
+      assert_equal(subject.pixel(1, 2), 'D')
+      assert_equal(subject.pixel(2, 2), 'D')
+      assert_equal(subject.pixel(3, 3), 'D')
+      assert_equal(subject.pixel(4, 3), 'D')
+      assert_equal(subject.pixel(3, 2), 'O')
+      assert_equal(subject.pixel(4, 2), 'O')
+      assert_equal(subject.pixel(1, 3), 'O')
+      assert_equal(subject.pixel(2, 3), 'O')
+    end
   end
 end

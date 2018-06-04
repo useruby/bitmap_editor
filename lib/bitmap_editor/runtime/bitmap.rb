@@ -23,8 +23,41 @@ class BitmapEditor
       end
   
       def draw(x1, y1, x2, y2, color)
-        (y1..y2).each do |y|
-          @pixels.fill(color, coordinate_to_index(x1, y)..coordinate_to_index(x2, y))
+        delta_x = x2 - x1
+        delta_y = y2 - y1
+
+        decision = 0
+
+        if (delta_x > delta_y)
+          decision = 2 * delta_y - delta_x
+    
+          y = y1
+
+          (x1..x2).each do |x|
+            set_pixel(x, y, color)
+
+            if decision < 0
+              decision += 2 * delta_y
+            else
+              y += 1 
+              decision -= 2 * delta_x
+            end
+          end
+        else
+          decision = 2 * delta_x - delta_y
+   
+          x = x1
+
+          (y1..y2).each do |y|
+            set_pixel(x, y, color)
+
+            if decision < 0
+              decision += 2 * delta_x
+            else
+              x += 1
+              decision -= 2 * delta_y
+            end
+          end
         end
       end
 
