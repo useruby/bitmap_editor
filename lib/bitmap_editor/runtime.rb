@@ -16,7 +16,7 @@ class BitmapEditor
       'L' => BitmapEditor::Runtime::SetPixel,
       'V' => BitmapEditor::Runtime::VerticalLine,
       'H' => BitmapEditor::Runtime::HorizontalLine,
-      'F' => BitmapEditor::Runtime::BucketFill,
+      'F' => BitmapEditor::Runtime::Fill,
       'S' => BitmapEditor::Runtime::Show
     }.freeze
 
