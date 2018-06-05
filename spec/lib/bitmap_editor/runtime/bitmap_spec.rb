@@ -64,6 +64,19 @@ describe BitmapEditor::Runtime::Bitmap do
 
       (3..5).each { |x| assert_equal(subject.pixel(x, 2), 'Z') }
     end
+
+    it 'draws diagonal line' do
+      subject.draw(1, 2, 4, 3, 'D')
+
+      assert_equal(subject.pixel(1, 2), 'D')
+      assert_equal(subject.pixel(2, 2), 'D')
+      assert_equal(subject.pixel(3, 3), 'D')
+      assert_equal(subject.pixel(4, 3), 'D')
+      assert_equal(subject.pixel(3, 2), 'O')
+      assert_equal(subject.pixel(4, 2), 'O')
+      assert_equal(subject.pixel(1, 3), 'O')
+      assert_equal(subject.pixel(2, 3), 'O')
+    end
   end
 
   describe '#fill' do
@@ -90,17 +103,14 @@ describe BitmapEditor::Runtime::Bitmap do
       (1..5).each { |x| assert_equal('B', subject.pixel(x, 2)) }
     end
 
-    it 'draws diagonal line' do
-      subject.draw(1, 2, 4, 3, 'D')
+    it "doesn't fill the pixel that on diagonal from the target" do
+      subject.set_pixel(1, 1, 'A')
+      subject.set_pixel(2, 2, 'A')
 
-      assert_equal(subject.pixel(1, 2), 'D')
-      assert_equal(subject.pixel(2, 2), 'D')
-      assert_equal(subject.pixel(3, 3), 'D')
-      assert_equal(subject.pixel(4, 3), 'D')
-      assert_equal(subject.pixel(3, 2), 'O')
-      assert_equal(subject.pixel(4, 2), 'O')
-      assert_equal(subject.pixel(1, 3), 'O')
-      assert_equal(subject.pixel(2, 3), 'O')
+      subject.fill(1, 1, 'B')
+
+      assert_equal('B', subject.pixel(1, 1))
+      assert_equal('A', subject.pixel(2, 2))
     end
   end
 end
